@@ -16,7 +16,13 @@ if (!arg.StartsWith("https://resources.download.minecraft.net/"))
 var uri = new Uri(arg);
 
 var pathParts = uri.AbsolutePath.Split('/', StringSplitOptions.RemoveEmptyEntries);
-(var dirName, var file) = (pathParts[0], pathParts[1]);
+if (pathParts.Length is not 2)
+{
+	Console.WriteLine("That's not a valid Minecraft object URL.");
+	return;
+}
+
+var dirName = pathParts[0];
 
 string mcObjDir = Path.Combine(Environment.GetEnvironmentVariable("appdata"), ".minecraft", "assets", "objects");
 
