@@ -22,7 +22,10 @@ string mcObjDir = Path.Combine(Environment.GetEnvironmentVariable("appdata"), ".
 
 string dir = Path.Combine(mcObjDir, dirName);
 if (!Directory.Exists(dir))
+{
 	Directory.CreateDirectory(dir);
+	Console.WriteLine($"Created {dir}");
+}
 
 Console.WriteLine("Running curl...");
 Console.WriteLine();
